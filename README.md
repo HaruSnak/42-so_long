@@ -1,43 +1,50 @@
 <img src="readme/so_long.png" alt="so_long" width="900"/>
 
+<div align="center">
+
 # So_Long
-The "so_long" project at 42 School is a programming project designed to familiarize students with creating small 2D games using the MinilibX graphics library.
+### A 2D Game Project at 42 School Using MiniLibX
 
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
+[![License][license-shield]][license-url]
 
-## 📒 Index
+</div>
 
-- [About](#about)
-- [Approach](#approach)
-  - [Installation](#installation)
-- [Development](#development)
-  - [Pre-Requisites](#pre-requisites)
-  - [File Structure](#file-structure)
-  - [Diagram Architecture](#diagram-architecture)  
-- [Notes](#notes)
-- [Credits](#credits)
+---
 
-## About
-The **So_Long** project is an introduction to *2D game development* for students at **42**. Using the **Minilibx library**, you will create a 2D game that includes:<br>
+## 🇬🇧 English
 
-*4-way character movement (W, S, A, D)*<br>
-*A move counter*<br>
-*A map that must be a rectangle with a valid path*<br>
-*A variety of restrictions/conditions to complete the project*<br>
+<details>
+<summary><b>📖 Click to expand/collapse English version</b></summary>
 
-**Here are some additional details about the project:**
+### 📖 About
 
-*The game must be developed using the C programming language.*<br>
-*The game must use the Minilibx library for graphics and input handling.*<br>
-*The game must have a start and end point.*<br>
-*The player must be able to move around the map.*<br>
-*The player must be able to collect objects on the map.*<br>
-*The player must avoid obstacles on the map.*<br>
-*The game must have a win condition and a lose condition.*<br>
+**So_Long** is a compulsory project for 42 School students. It consists of creating a small 2D game in C using the MiniLibX graphics library. The player must collect all collectibles on the map and escape through the exit, while avoiding walls and enemies.
+
+This project teaches:
+- 2D graphics programming with MiniLibX
+- Map parsing and validation
+- Game loop management and event handling
+- Pathfinding algorithms (BFS for valid path checking)
+- Sprite animation and collision detection
+- Memory management and error handling
+
+### 🧠 Skills Learned
+
+By completing the So_Long project, students develop essential skills in C programming and game development:
+
+- **MiniLibX usage**: Learning to initialize windows, handle events, and draw images with the MiniLibX library.
+- **Map parsing**: Reading and validating map files with specific rules (walls, collectibles, exit, player).
+- **Game mechanics**: Implementing player movement, collision detection, collectible gathering, and win/lose conditions.
+- **Path validation**: Using BFS to ensure a valid path exists from start to exit collecting all items.
+- **Animation and timing**: Managing sprite animations and game updates with timing functions like gettimeofday.
+- **Error handling**: Robust validation of map files, with clear error messages for invalid configurations.
+- **Bonus features**: Adding enemy AI, sprite animations, and on-screen HUD for extra points.
+- **Code organization**: Structuring code into modular functions, adhering to 42 norms for documentation and style.
+- **Graphics management**: Handling window events, smooth rendering, and user input (keyboard, mouse).
 
 ## Approach
 From the start, I wanted to move away from the original project and explore a different path. My ambition was to create a top-down hack'n slash game that promised a fluid and enjoyable gameplay loop for the user. However, the time constraints forced me to favor a more familiar approach, while still keeping the two key points mentioned above.<br>
@@ -78,236 +85,351 @@ In order to enrich the gameplay and bring an additional challenge, I introduced 
 
 **Scaling assets to 100x100:** *To reduce the player's X-axis and provide a better sense of movement.*<br>
 
-## Installation
+### 📋 Table of Contents
+
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Project Structure](#project-structure)
+- [Compilation](#compilation)
+- [Function Reference](#function-reference)
+- [Credits](#credits)
+
+<a name="features"></a>
+
+### ✨ Features
+
+- **Complete 2D game implementation** with player movement, collectibles, and exit
+- **Map validation** ensuring rectangular maps, walls, valid path, and required elements
+- **Sprite animations** for player walking, jumping, and enemies
+- **HUD display** showing lives, coins collected, and move count
+- **Enemy AI** with patrolling monsters that can damage the player
+- **Bonus gravity and jumping** mechanics for enhanced gameplay
+- **Strict C compliance** with 42 School norming standards
+
+<a name="installation"></a>
+
+### 🚀 Installation
+
 ```bash
-# Clone this repository
-$ git clone https://github.com/HaruSnak/So_Long.git
-
-# Go into the repository
-$ cd So_Long
-
-# To compile the program
-$ make
-
-# Execution example
-$ ./so_long {NAME_MAP}.ber
-
-# Allows you to do a complete cleaning of your construction environment
-$ make fclean # Or make clean
+# Clone the repository
+git clone https://github.com/HaruSnak/42-so_long
+cd 42-so_long
 ```
 
-## Development
-### Pre-Requisites
-```
-Requirements for Linux
+<a name="usage"></a>
 
-MinilibX only support TrueColor visual type (8,15,16,24 or 32 bits depth)
-gcc
+### 💻 Usage
+
+Compile and run the game with a map file:
+
+```bash
 make
-X11 include files (package xorg)
-XShm extension must be present (package libxext-dev)
-Utility functions from BSD systems - development files (package libbsd-dev)
-e.g. sudo apt-get install gcc make xorg libxext-dev libbsd-dev (Debian/Ubuntu)
+./so_long maps/map3.ber
 ```
 
-### File Structure
+Controls:
+- **WASD or Arrow keys**: Move the player
+- **ESC**: Quit the game
+- **Mouse click**: Interact with menu
+
+<a name="project-structure"></a>
+
+### 📂 Project Structure
 
 ```
-.
-└── 📁so_long
-    └── Makefile
-    └── 📁assets
-        └── 📁heart
-            └── heart.xpm
-            └── heart_empty.xpm
-        └── 📁monsters
-            └── monster_b.xpm
-            └── monster_w.xpm
-        └── 📁player
-            └── ply_base.xpm
-            └── ply_base_dps.xpm
-            └── ply_base_r.xpm
-            └── ply_jump.xpm
-            └── ply_jump_r.xpm
-            └── ply_walk.xpm
-            └── ply_walk1.xpm
-            └── ply_walk1_r.xpm
-            └── ply_walk2.xpm
-            └── ply_walk2_r.xpm
-            └── ply_walk3.xpm
-        └── 📁tiles
-            └── bg.xpm
-            └── cloud_center.xpm
-            └── cloud_left.xpm
-            └── cloud_right.xpm
-            └── coin.xpm
-            └── coin_r.xpm
-            └── exit.xpm
-            └── flag.xpm
-            └── grass.xpm
-            └── grass_center.xpm
-            └── grass_l_c.xpm
-            └── grass_left.xpm
-            └── grass_r_c.xpm
-            └── grass_right.xpm
-            └── other_1.xpm
-            └── other_2.xpm
-            └── other_3.xpm
-            └── platform.xpm
-            └── sign_right.xpm
-            └── start.xpm
-            └── wall.xpm
-            └── water_down.xpm
-            └── water_up.xpm
-        └── 📁ui
-            └── eight_coin.xpm
-            └── five_coin.xpm
-            └── four_coin.xpm
-            └── main_menu.xpm
-            └── nine_coin.xpm
-            └── one_coin.xpm
-            └── seven_coin.xpm
-            └── six_coin.xpm
-            └── ten_coin.xpm
-            └── three_coin.xpm
-            └── two_coin.xpm
-            └── walk.xpm
-    └── 📁includes
-        └── 📁libft
-            └── Makefile
-            └── 📁char
-                └── ft_isalnum.c
-                └── ft_isalpha.c
-                └── ft_isascii.c
-                └── ft_isdigit.c
-                └── ft_isprint.c
-                └── ft_tolower.c
-                └── ft_toupper.c
-            └── 📁conv
-                └── ft_atoi.c
-                └── ft_itoa.c
-            └── 📁gnl
-                └── get_next_line.c
-            └── 📁includes
-                └── libft.h
-            └── 📁lst
-                └── ft_lstadd_back_bonus.c
-                └── ft_lstadd_front_bonus.c
-                └── ft_lstclear_bonus.c
-                └── ft_lstdelone_bonus.c
-                └── ft_lstiter_bonus.c
-                └── ft_lstlast_bonus.c
-                └── ft_lstmap_bonus.c
-                └── ft_lstnew_bonus.c
-                └── ft_lstsize_bonus.c
-            └── 📁mem
-                └── ft_bzero.c
-                └── ft_calloc.c
-                └── ft_memchr.c
-                └── ft_memcmp.c
-                └── ft_memcpy.c
-                └── ft_memmove.c
-                └── ft_memset.c
-            └── 📁printf
-                └── ft_conv_primary.c
-                └── ft_conv_specifies.c
-                └── ft_conv_suit.c
-                └── ft_printf.c
-            └── 📁put
-                └── ft_putchar.c
-                └── ft_putchar_fd.c
-                └── ft_putendl_fd.c
-                └── ft_putnbr.c
-                └── ft_putnbr_fd.c
-                └── ft_putstr.c
-                └── ft_putstr_fd.c
-            └── 📁str
-                └── ft_split.c
-                └── ft_strchr.c
-                └── ft_strdup.c
-                └── ft_striteri.c
-                └── ft_strjoin.c
-                └── ft_strlcat.c
-                └── ft_strlcpy.c
-                └── ft_strlen.c
-                └── ft_strmapi.c
-                └── ft_strncmp.c
-                └── ft_strnstr.c
-                └── ft_strrchr.c
-                └── ft_strtrim.c
-                └── ft_substr.c
-        └── so_long.h
-    └── 📁maps
-        └── error1.ber
-        └── error10.ber
-        └── error11.ber
-        └── error2.ber
-        └── error3.ber
-        └── error4.ber
-        └── error5.ber
-        └── error6.ber
-        └── error7.ber
-        └── error8.ber
-        └── error9.ber
-        └── map1.ber
-        └── map2.ber
-        └── map3.ber
-        └── mini2.ber
-        └── mini3.ber
-    └── 📁minilibx-linux
-    └── 📁srcs
-        └── 📁bonus
-            └── 📁monster
-                └── monster.c
-            └── 📁player_bonus
-                └── player_coin.c
-        └── 📁errors
-            └── errors.c
-        └── 📁game
-            └── settings.c
-        └── 📁map
-            └── draw.c
-            └── path_include.c
-        └── 📁parsing
-            └── parsing.c
-            └── path_bfs.c
-            └── path_valid.c
-        └── 📁player
-            └── player.c
-            └── player_animation.c
-            └── player_collision.c
-            └── player_gravity.c
-        └── so_long.c
-        └── 📁ui
-            └── hud.c
-            └── main_menu.c
+42-so_long/
+├── Makefile                    # Build script
+├── so_long.h                   # Main header file
+├── so_long.c                   # Main game entry point
+├── LICENSE                     # License file
+├── README.md                   # This file
+├── README-Template.md          # Template for README
+├── assets/                     # Game sprites and textures
+│   ├── heart/
+│   ├── monsters/
+│   ├── player/
+│   ├── tiles/
+│   └── ui/
+├── includes/
+│   ├── so_long.h
+│   └── libft/                  # Custom library
+├── maps/                       # Map files (.ber)
+├── minilibx-linux/             # MiniLibX library
+├── readme/                     # README assets
+└── srcs/                       # Source files
+    ├── bonus/
+    ├── errors/
+    ├── game/
+    ├── map/
+    ├── parsing/
+    ├── player/
+    └── ui/
 ```
 
-### Diagram Architecture
-Write the build Instruction here.
+<a name="compilation"></a>
 
-## Notes
-You can optionally add a FAQ section about the project.
+### 🔧 Compilation
 
-## Credits
+Compile the project using the Makefile:
 
-Below you will find the links used for this project:
+```bash
+make          # Compile the game
+make clean    # Remove object files
+make fclean   # Remove executable and object files
+make re       # Recompile everything
+```
 
-- [Norm 42](https://cdn.intra.42.fr/pdf/pdf/960/norme.en.pdf)
-- [Docs Libs Minilibx | Harm-Smits](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html#installation)
-- [Docs Libs Minilibx | Reactive](https://reactive.so/post/42-a-comprehensive-guide-to-so_long)
-- [Events ARGS | Minilibx](https://tronche.com/gui/x/xlib/events/types.html)
-- [Convertio | Format XPML](https://convertio.co/fr/png-xpm/)
-- [AnyConv | Format XPM](https://anyconv.com/fr/convertisseur-de-png-en-xpm/)
-- [Assets free | Kenney](https://kenney.nl/assets/pixel-platformer)
+<a name="function-reference"></a>
 
-[contributors-shield]: https://img.shields.io/github/contributors/HaruSnak/So_long.svg?style=for-the-badge
-[contributors-url]: https://github.com/HaruSnak/So_Long/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/HaruSnak/So_Long.svg?style=for-the-badge
-[forks-url]: https://github.com/HaruSnak/So_Long/network/members
-[stars-shield]: https://img.shields.io/github/stars/HaruSnak/So_Long.svg?style=for-the-badge
-[stars-url]: https://github.com/HaruSnak/So_Long/stargazers
-[issues-shield]: https://img.shields.io/github/issues/HaruSnak/So_Long.svg?style=for-the-badge
-[issues-url]: https://github.com/HaruSnak/So_Long/issues
+### 📚 Function Reference
+
+#### Main Functions
+- [`main`](srcs/so_long.c) - Game initialization and loop
+- [`ft_parse_base`](srcs/parsing/parsing.c) - Map parsing and validation
+- [`ft_input_player`](srcs/player/player.c) - Player input handling
+- [`ft_draw_map`](srcs/map/draw.c) - Map rendering
+
+#### Key Features
+- **BFS Pathfinding**: Ensures valid path from player to exit
+- **Collision Detection**: Prevents movement through walls
+- **Animation System**: Handles sprite changes for movement
+- **HUD Management**: Displays game stats on screen
+
+### 👨‍🎓 Note
+<p align="left">
+    <img src="https://image.noelshack.com/fichiers/2024/11/2/1710270009-125.png"
+         alt="125/100" width="216" height="164">
+</p>
+
+<a name="credits"></a>
+
+### 📖 Credits
+
+- **42 School Norm**: [Official C Coding Standard](https://cdn.intra.42.fr/pdf/pdf/960/norme.en.pdf)
+- **MiniLibX Documentation**: [Harm-Smits Guide](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html)
+- **Free Assets**: [Kenney.nl](https://kenney.nl/assets/pixel-platformer)
+
+### 📄 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+</details>
+
+---
+
+## 🇫🇷 Français
+
+<details>
+<summary><b>📖 Cliquez pour développer/réduire la version française</b></summary>
+
+### 📖 À propos
+
+**So_Long** est un projet obligatoire pour les étudiants de l'école 42. Il s'agit de créer un petit jeu 2D en C utilisant la bibliothèque graphique MiniLibX. Le joueur doit collecter tous les collectibles sur la carte et s'échapper par la sortie, tout en évitant les murs et les ennemis.
+
+Ce projet enseigne :
+- La programmation graphique 2D avec MiniLibX
+- Le parsing et la validation de cartes
+- La gestion des boucles de jeu et des événements
+- Les algorithmes de recherche de chemin (BFS pour vérifier un chemin valide)
+- L'animation de sprites et la détection de collisions
+- La gestion de la mémoire et des erreurs
+
+### 🧠 Compétences acquises
+
+En complétant le projet So_Long, les étudiants développent des compétences essentielles en programmation C et développement de jeux :
+
+- **Utilisation de MiniLibX** : Apprendre à initialiser des fenêtres, gérer les événements et dessiner des images avec la bibliothèque MiniLibX.
+- **Parsing de cartes** : Lire et valider des fichiers de carte avec des règles spécifiques (murs, collectibles, sortie, joueur).
+- **Mécaniques de jeu** : Implémenter le mouvement du joueur, la détection de collisions, la collecte d'objets et les conditions de victoire/défaite.
+- **Validation de chemin** : Utiliser BFS pour s'assurer qu'un chemin valide existe du départ à la sortie en collectant tous les objets.
+- **Animation et timing** : Gérer les animations de sprites et les mises à jour du jeu avec des fonctions de timing comme gettimeofday.
+- **Gestion d'erreurs** : Validation robuste des fichiers de carte, avec des messages d'erreur clairs pour les configurations invalides.
+- **Fonctionnalités bonus** : Ajouter une IA ennemie, des animations de sprites et un HUD à l'écran pour des points supplémentaires.
+- **Organisation du code** : Structurer le code en fonctions modulaires, en respectant les normes 42 pour la documentation et le style.
+- **Gestion graphique** : Gérer les événements de fenêtre, le rendu fluide et les entrées utilisateur (clavier, souris).
+
+## Approche
+Dès le départ, je voulais m'éloigner du projet original et explorer un chemin différent. Mon ambition était de créer un jeu de hack'n slash en vue aérienne qui promettait une boucle de gameplay fluide et agréable pour l'utilisateur. Cependant, les contraintes de temps m'ont forcé à privilégier une approche plus familière, tout en gardant les deux points clés mentionnés ci-dessus.<br>
+
+C'est ainsi que ce *"Mario remasterisé"* est né, reprenant la boucle de gameplay iconique de ce jeu légendaire. Vous commencez sur l'une des cartes du jeu, avec pour mission de collecter autant de pièces que possible. Mais attention, vous pourriez ne pas être seul sur ce chemin rempli de trésors !<br>
+
+![player](readme/player.gif)
+
+J'ai opté pour une **vue oblique 2D**, *offrant une perspective dynamique et immersive*. Les éléments graphiques ont été récupérés sur le **site web Kenney (assets gratuits)** et retravaillés dans *Photoshop* pour s'intégrer parfaitement avec **l'environnement Minilibx**.<br>
+
+Afin d'enrichir le gameplay et apporter un défi supplémentaire, j'ai introduit des structures élevées et des ennemis. Le joueur pourra ainsi sauter pour surmonter les obstacles ou esquiver les monstres hostiles.<br>
+
+![monster](readme/monster.gif)
+
+*(Les contours de l'interface utilisateur (cœur, pièces et compteur de pas) sont en noir car mon WSL a des problèmes de transparence avec Minilibx, qui fonctionneront correctement une fois sur MacOS. Je m'excuse encore pour cette gêne, qui me dérange légèrement.)*<br>
+
+![game](readme/game.png)
+
+### **Fonctionnalités**
+
+**Algorithme de recherche en largeur (BFS) :** *Utilisé pour déterminer si une sortie est possible depuis la position du joueur sur la carte.*<br>
+
+**Capacité de saut :** *Le joueur peut maintenant sauter et descendre plus rapidement en appuyant sur la flèche vers le bas en l'air.*<br>
+
+**Diverses animations :** *Ajout d'animations pour les monstres, les pièces et le joueur.*<br>
+
+**HUD du joueur :** *Affiche des informations telles que la santé, les pièces collectées et le nombre de mouvements.*<br>
+
+**IA basique pour les monstres :** *Les monstres suivent un chemin simple et ont une hitbox qui peut endommager le joueur.*<br>
+
+### **Fonctionnalités à ajouter :**
+
+**Caméra centrée sur le joueur :** *Pour créer un sentiment de progression dans le jeu.*<br>
+
+**Amélioration des hitboxes et du clipping des assets :** *Pour éviter les problèmes de collision et améliorer l'apparence générale du jeu.*<br>
+
+**Écrans de victoire et de défaite :** *Pour indiquer la fin du jeu et fournir des retours à l'utilisateur.*<br>
+
+**Mise à l'échelle des assets à 100x100 :** *Pour réduire l'axe X du joueur et fournir un meilleur sentiment de mouvement.*<br>
+
+### 📋 Table des matières
+
+- [Caractéristiques](#caractéristiques)
+- [Installation](#installation-1)
+- [Utilisation](#utilisation)
+- [Structure du projet](#structure-du-projet)
+- [Compilation](#compilation-1)
+- [Référence des fonctions](#référence-des-fonctions)
+- [Crédits](#crédits-1)
+
+<a name="caractéristiques"></a>
+
+### ✨ Caractéristiques
+
+- **Implémentation complète de jeu 2D** avec mouvement du joueur, collectibles et sortie
+- **Validation de carte** assurant des cartes rectangulaires, murs, chemin valide et éléments requis
+- **Animations de sprites** pour la marche du joueur, le saut et les ennemis
+- **Affichage HUD** montrant les vies, pièces collectées et compteur de mouvements
+- **IA ennemie** avec monstres patrouilleurs pouvant endommager le joueur
+- **Mécaniques bonus de gravité et saut** pour un gameplay amélioré
+- **Conformité stricte C** avec les normes de l'école 42
+
+<a name="installation-1"></a>
+
+### 🚀 Installation
+
+```bash
+# Cloner le dépôt
+git clone https://github.com/HaruSnak/42-so_long
+cd 42-so_long
+```
+
+<a name="utilisation"></a>
+
+### 💻 Utilisation
+
+Compilez et lancez le jeu avec un fichier de carte :
+
+```bash
+make
+./so_long maps/map3.ber
+```
+
+Contrôles :
+- **WASD ou flèches** : Déplacer le joueur
+- **ESC** : Quitter le jeu
+- **Clic souris** : Interagir avec le menu
+
+<a name="structure-du-projet"></a>
+
+### 📂 Structure du projet
+
+```
+42-so_long/
+├── Makefile                    # Script de build
+├── so_long.h                   # Fichier d'en-tête principal
+├── so_long.c                   # Point d'entrée principal du jeu
+├── LICENSE                     # Fichier de licence
+├── README.md                   # Ce fichier
+├── README-Template.md          # Template pour README
+├── assets/                     # Sprites et textures du jeu
+│   ├── heart/
+│   ├── monsters/
+│   ├── player/
+│   ├── tiles/
+│   └── ui/
+├── includes/
+│   ├── so_long.h
+│   └── libft/                  # Bibliothèque personnalisée
+├── maps/                       # Fichiers de carte (.ber)
+├── minilibx-linux/             # Bibliothèque MiniLibX
+├── readme/                     # Ressources README
+└── srcs/                       # Fichiers sources
+    ├── bonus/
+    ├── errors/
+    ├── game/
+    ├── map/
+    ├── parsing/
+    ├── player/
+    └── ui/
+```
+
+<a name="compilation-1"></a>
+
+### 🔧 Compilation
+
+Compilez le projet en utilisant le Makefile :
+
+```bash
+make          # Compiler le jeu
+make clean    # Supprimer les fichiers objets
+make fclean   # Supprimer l'exécutable et les fichiers objets
+make re       # Recompiler tout
+```
+
+<a name="référence-des-fonctions"></a>
+
+### 📚 Référence des fonctions
+
+#### Fonctions principales
+- [`main`](srcs/so_long.c) - Initialisation et boucle du jeu
+- [`ft_parse_base`](srcs/parsing/parsing.c) - Parsing et validation de la carte
+- [`ft_input_player`](srcs/player/player.c) - Gestion des entrées joueur
+- [`ft_draw_map`](srcs/map/draw.c) - Rendu de la carte
+
+#### Fonctionnalités clés
+- **Recherche de chemin BFS** : Assure un chemin valide du joueur à la sortie
+- **Détection de collisions** : Empêche le mouvement à travers les murs
+- **Système d'animation** : Gère les changements de sprites pour le mouvement
+- **Gestion HUD** : Affiche les statistiques du jeu à l'écran
+
+### 👨‍🎓 Note
+<p align="left">
+    <img src="https://image.noelshack.com/fichiers/2024/11/2/1710270009-125.png"
+         alt="125/100" width="216" height="164">
+</p>
+
+<a name="crédits-1"></a>
+
+### 📖 Crédits
+
+- **Norme 42** : [Standard C officiel](https://cdn.intra.42.fr/pdf/pdf/960/norme.en.pdf)
+- **Documentation MiniLibX** : [Guide Harm-Smits](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html)
+- **Assets gratuits** : [Kenney.nl](https://kenney.nl/assets/pixel-platformer)
+
+### 📄 Licence
+
+Ce projet est sous licence **MIT** - voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
+</details>
+
+---
+
+[contributors-shield]: https://img.shields.io/github/contributors/HaruSnak/42-so_long.svg?style=for-the-badge
+[contributors-url]: https://github.com/HaruSnak/42-so_long/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/HaruSnak/42-so_long.svg?style=for-the-badge
+[forks-url]: https://github.com/HaruSnak/42-so_long/network/members
+[stars-shield]: https://img.shields.io/github/stars/HaruSnak/42-so_long.svg?style=for-the-badge
+[stars-url]: https://github.com/HaruSnak/42-so_long/stargazers
+[issues-shield]: https://img.shields.io/github/issues/HaruSnak/42-so_long.svg?style=for-the-badge
+[issues-url]: https://github.com/HaruSnak/42-so_long/issues
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/shany-moreno-5a863b2aa
+[license-shield]: https://img.shields.io/github/license/HaruSnak/42-so_long.svg?style=for-the-badge
+[license-url]: https://github.com/HaruSnak/42-so_long/blob/master/LICENSE
